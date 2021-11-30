@@ -53,19 +53,11 @@ $objetoTabla = new elementosPage();
                 </div>
                 <div class="col-8">
                 <select name="cmb_buses" id="cmb_buses"  class="form-control">
-                          <option value="0" disabled selected > Seleccionar</option>
+                          <option value="0" disabled selected > Seleccione una unidad de trasporte</option>
                     <?php
-                          include("conexion.php");
-                          $sql = "select *
-                          from tbl_buses ";
-                          $query = mysqli_query($con, $sql)
-                          or die('error: '.mysqli_error($con));  
-                          while($columna = mysqli_fetch_assoc($query)){
-                              echo "
-                              <option value='".$columna["bus_codigo"]."'>".$columna["bus_marca"]."</option>
-                              ";
-                          }
-                      ?>
+
+                    echo $objetoTabla-> obtenerBusesCombobox();
+                    ?>
              </select>
                 </div>
                 </div><br>
@@ -75,20 +67,12 @@ $objetoTabla = new elementosPage();
                 <label  class="form-label">Cliente</label>
                 </div>
                 <div class="col-3">
-                <select name="cmb_buses" id="cmb_buses"  class="form-control">
-                          <option value="0" disabled selected > Seleccionar</option>
+                <select name="cmb_clientes" id="cmb_clientes"  class="form-control">
+                          <option value="0" disabled selected > Seleccione un cliente</option>
                     <?php
-                          include("conexion.php");
-                          $sql = "select*
-                          from tbl_clientes ";
-                          $query = mysqli_query($con, $sql)
-                          or die('error: '.mysqli_error($con));  
-                          while($columna = mysqli_fetch_assoc($query)){
-                              echo "
-                              <option value='".$columna["cliente_codigo"]."'>".$columna["cliente_primer_nombre"]."</option>
-                              ";
-                          }
-                      ?>
+
+                    echo $objetoTabla-> obtenerClientesCombobox();
+                    ?>
              </select>
                 </div>
           
@@ -96,7 +80,7 @@ $objetoTabla = new elementosPage();
                 <label  class="form-label">Peso Lbs.</label>
                 </div>
                 <div class="col-3">
-                <input type="text" name="speso"  id="speso" class="form-control" aria-label="default input example" required>
+                <input type="text" name="speso"  id="speso" class="form-control" value="0" aria-label="default input example" required>
                 </div>
          </div><br>
 
@@ -126,7 +110,13 @@ $objetoTabla = new elementosPage();
                     <label  class="form-label">Tipo Paquetes</label>
                     </div>
                     <div class="col-3">
-                    <input type="text" name="tpaquete"  id="tpaquete" class="form-control" aria-label="default input example" required>
+                <select name="cmb_tipo_paquetes" id="cmb_tipo_paquetes"  class="form-control">
+                          <option value="0" disabled selected > Seleccione un tipo de paquete</option>
+                    <?php
+
+                        echo $objetoTabla-> obtenerTipoPaquetesCombobox();
+                    ?>
+             </select>
                     </div>
 
                     <div class="col-2">
@@ -134,9 +124,9 @@ $objetoTabla = new elementosPage();
                     </div>
                     <div class="col-3">
                     <select name="scmb_estado" id="scmb_estado"  class="form-control">
-                            <option value="0" disabled selected > Seleccionar</option>
-                            <option value='activo'>ACTIVO</option>
-                            <option value='inactivo'>INACTIVO</option>
+                            <option value="" disabled selected > Seleccione el estado del paquete</option>
+                            <option value='Registrado'>Registrado</option>
+                            <option value='Entregado'>Entregado</option>
                     </select>
                     </div>
                 </div><br>
